@@ -1,33 +1,41 @@
 *,
-        *:after,
-        *:before {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            padding: 0;
-            margin: 0;
-        }
-        
-        #grid-container {
-            overflow: scroll;
-        }
-        
-        #grid {
-            height: 601px;
-            background-size: 30px 30px;
-            background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(to bottom, grey 1px, transparent 1px);
-            width: 200%;            
-        }
-        
-        #grid-snap {
-            width: 30px;
-            font-size: 1.2em;
-        }
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
-        .character-image {
-            height: 30px; 
-            width: 30px;
-        }
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 30px;
+}
+
+#grid-container {
+    overflow: scroll;
+}
+
+#grid {
+    height: 601px;
+    background-size: 30px 30px;
+    background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(to bottom, grey 1px, transparent 1px);
+    width: 200%;            
+}
+
+#grid-snap {
+    width: 30px;
+    font-size: 1.2em;
+}
+
+.character-image {
+    height: 30px; 
+    width: 30px;
+}
+
+#dice-number{
+    width:50px;
+}

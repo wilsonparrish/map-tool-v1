@@ -16,6 +16,22 @@
         </div>
     </div>
 
+    <br><br><br>
+    <h3>Dice roller</h3>
+    <div class="dice-bag">
+        <input type="number" id="dice-number">
+        <select name="dice-type" id="dice-type">
+            <option value="3">d3</option>
+            <option value="4">d4</option>
+            <option value="6">d6</option>
+            <option value="8">d8</option>
+            <option value="10">d10</option>
+            <option value="12">d12</option>
+            <option value="20">d20</option>
+        </select>
+        <button id="roll-button">Roll!</button>
+        <span id="roll"></span>
+    </div>
 
     <script src="node_modules/interact.js/dist/interact.js"></script>
     <script src="snap.js"></script>

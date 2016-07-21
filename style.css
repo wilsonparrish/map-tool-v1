@@ -29,6 +29,7 @@ body {
 #grid-snap {
     width: 30px;
     font-size: 1.2em;
+    cursor: crosshair;
 }
 
 .character-image {

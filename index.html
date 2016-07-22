@@ -5,34 +5,39 @@
     <meta charset="UTF-8">
     <title>D20 tabletop</title>
 
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="grid-container">
+    <div class="w3-quarter w3-light-blue" id="sidebar">
+        <div class="w3-card-8 w3-white">
+            <img src="/images/dice-152-92041.png" style="width:30px;">  
+            <h3 style="display: inline-block">Dice roller</h3>
+            <div class="dice-bag">
+                <input type="number" id="dice-number"> x 
+                <select name="dice-type" id="dice-type">
+                    <option value="3">d3</option>
+                    <option value="4">d4</option>
+                    <option value="6">d6</option>
+                    <option value="8">d8</option>
+                    <option value="10">d10</option>
+                    <option value="12">d12</option>
+                    <option value="20">d20</option>
+                </select>
+                <button id="roll-button">Roll!</button>
+                <span id="roll"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-threequarter" id="grid-container">
         <div id="grid" draggable="true">
             <div id="grid-snap">
                 <img src="http://charactersheets.minotaur.cc/images/single.png" alt="" class="character-image">
             </div>
         </div>
-    </div>
-
-    <br><br><br>
-    <h3>Dice roller</h3>
-    <div class="dice-bag">
-        <input type="number" id="dice-number">
-        <select name="dice-type" id="dice-type">
-            <option value="3">d3</option>
-            <option value="4">d4</option>
-            <option value="6">d6</option>
-            <option value="8">d8</option>
-            <option value="10">d10</option>
-            <option value="12">d12</option>
-            <option value="20">d20</option>
-        </select>
-        <button id="roll-button">Roll!</button>
-        <span id="roll"></span>
     </div>
 
     <script src="node_modules/interact.js/dist/interact.js"></script>

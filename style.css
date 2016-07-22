@@ -11,12 +11,18 @@ html, body {
     margin: 0;
 }
 
-body {
+#sidebar {
     padding: 30px;
+    height: 1000px;
+}
+
+.w3-card-8 {
+    padding: 15px;
 }
 
 #grid-container {
     overflow: scroll;
+    padding: 30px;
 }
 
 #grid {

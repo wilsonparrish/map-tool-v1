@@ -12,7 +12,6 @@ html, body {
 }
 
 #sidebar {
-    padding: 30px;
     height: 1000px;
 }
 
@@ -43,6 +42,6 @@ html, body {
     width: 30px;
 }
 
-#dice-number{
+#dice-number, #dice-modifier{
     width:50px;
 }

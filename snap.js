@@ -47,6 +47,7 @@ button.onclick = function (e) {
 function rollDice() {
     var numberOfDice = document.getElementById('dice-number').value;
     var typeOfDice = document.getElementById('dice-type').value;
+    var modifier = document.getElementById('dice-modifier').value;
     var dieRolls = [];
     console.log('number', numberOfDice);
     console.log('type', typeOfDice);
@@ -56,6 +57,7 @@ function rollDice() {
         dieRolls.push(dieRoll);
         numberOfDice--;
     }
+    dieRolls.push(parseInt(modifier)); //add the mod to the roll
     document.getElementById('roll').textContent = (dieRolls.reduce(function(x,y){return x+y;})).toString();
 };
 

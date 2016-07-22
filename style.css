@@ -15,7 +15,7 @@ html, body {
     height: 1000px;
 }
 
-.w3-card-8 {
+.sidebar-content, .feature-card-content {
     padding: 15px;
 }
 
@@ -28,7 +28,7 @@ html, body {
     height: 601px;
     background-size: 30px 30px;
     background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(to bottom, grey 1px, transparent 1px);
-    width: 200%;            
+    width: 150%;            
 }
 
 #grid-snap {
@@ -43,5 +43,5 @@ html, body {
 }
 
 #dice-number, #dice-modifier{
-    width:50px;
+    width:100px;
 }

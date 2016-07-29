@@ -19,6 +19,21 @@ html, body {
     padding: 15px;
 }
 
+
+/*home styles*/
+#home-banner {
+    height: 200px;
+    padding: 20px;
+    text-align: center; 
+}
+#home-banner {
+    margin: 0;
+}
+#home-body {
+    padding: 30px;
+}
+
+/* map styles*/
 #grid-container {
     overflow: scroll;
     padding: 30px;
@@ -44,4 +59,13 @@ html, body {
 
 #dice-number, #dice-modifier{
     width:100px;
+}
+
+.dice-bag > input {
+    margin: 5px 0;
+}
+
+#recent-rolls {
+    border: 1px solid black;
+    padding: 3px;
 }

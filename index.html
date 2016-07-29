@@ -10,23 +10,55 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="w3-quarter w3-light-blue w3-card-8" id="sidebar">
-        <header class="w3-container w3-blue-grey">
-            <h1>Table Top Tools</h1>
-        </header>
-        <div class="sidebar-content">
-            <div class="w3-card-8 w3-white feature-card">
-                <div class="w3-container w3-indigo">
-                    <img src="/images/dice-152-92041.png" style="width:30px;">
-                    <h3 style="display: inline-block">Dice roller</h3>
+<body ng-app="app">
+    <div class="w3-row">
+        <div class="w3-col m4 l3 w3-light-blue w3-card-8" id="sidebar" ng-controller="sidebarCtrl">
+            <header class="w3-container w3-blue-grey">
+                <h1>Table Top Tools</h1>
+            </header>
+            <div class="sidebar-content">
+                <div class="w3-card-8 w3-white feature-card">
+                    <div class="w3-container w3-indigo">
+                        <img src="/images/compas-152-201442.png" style="width:30px;">
+                        <h3 style="display: inline-block">Your Profile</h3>
+                    </div>
+                    <div class="feature-card-content">
+                        <div ng-show="firebaseUser">Hello, {{firebaseUser.user.displayName}}</div>
+                        <div ng-hide="firebaseUser">
+                            It looks like you're not logged in.
+                            <br>
+                            <button ng-click="signIn()" class="w3-btn w3-red">Sign in with Google</button>
+                        </div>
+                    </div>
                 </div>
                 <br>
-                <div class="feature-card-content">
-                Number of Dice x Type of Dice + Modifiers
-                    <div class="dice-bag">
-                        <input type="number" id="dice-number"> x
-                        <select name="dice-type" id="dice-type">
+                <div class="w3-card-8 w3-white feature-card">
+                    <div class="w3-container w3-indigo">
+                        <img src="/images/compas-152-201442.png" style="width:30px;">
+                        <h3 style="display: inline-block">Navigation</h3>
+                    </div>
+                    <div class="feature-card-content">
+                        <ul>
+                            <li>
+                                <a ui-sref="home">Home</a>
+                            </li>
+                            <li>
+                                <a ui-sref="gridmap">Gridmap</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="w3-card-8 w3-white feature-card">
+                    <div class="w3-container w3-indigo">
+                        <img src="/images/dice-152-92041.png" style="width:30px;">
+                        <h3 style="display: inline-block">Dice roller</h3>
+                    </div>
+                    <div class="feature-card-content">
+                        Number of Dice x Type of Dice + Modifiers
+                        <div class="dice-bag">
+                            <input type="number" id="dice-number"> x
+                            <select name="dice-type" id="dice-type">
                             <option value="3">d3</option>
                             <option value="4">d4</option>
                             <option value="6">d6</option>
@@ -35,25 +67,45 @@
                             <option value="12">d12</option>
                             <option value="20">d20</option>
                         </select> +
-                        <input type="number" id="dice-modifier">
-                        <button id="roll-button">Roll!</button>
-                        <span id="roll"></span>
+                            <input type="number" id="dice-modifier">&nbsp&nbsp
+                            <button id="roll-button">Roll!</button>
+                            <span id="roll"></span>
+                        </div>
+                        <br> Recent Rolls
+                        <div id="recent-rolls"></div>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
+
+        <ui-view class="w3-col m8 l9"></ui-view>
     </div>
 
-    <div class="w3-threequarter" id="grid-container">
-        <div id="grid" draggable="true">
-            <div id="grid-snap">
-                <img src="http://charactersheets.minotaur.cc/images/single.png" alt="" class="character-image">
-            </div>
-        </div>
-    </div>
-
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+    <script>
+         // Initialize Firebase
+         var config = {
+            apiKey: "AIzaSyDREENmIptW3k9iE2d3L16Y_BX86UUeHtk",
+            authDomain: "tabletop-tools.firebaseapp.com",
+            databaseURL: "https://tabletop-tools.firebaseio.com",
+            storageBucket: "tabletop-tools.appspot.com",
+         };
+        firebase.initializeApp(config);
+    </script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+    <!-- Interactjs -->
     <script src="node_modules/interact.js/dist/interact.js"></script>
-    <script src="snap.js"></script>
+    <!-- Project Scripts -->
+    <script src="scripts/app.module.js"></script>
+    <script src="scripts/app.routes.js"></script>
+    <script src="scripts/controllers/mapCtrl.js"></script>
+    <script src="scripts/controllers/sidebarCtrl.js"></script>
 
 </body>
 

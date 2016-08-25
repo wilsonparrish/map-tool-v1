@@ -15,6 +15,11 @@
                     templateUrl: '../views/gridmap.html',
                     controller: 'mapCtrl'
                 })
+                .state('divmap', {
+                    url: '/divmap',
+                    templateUrl: '../views/divmap.html',
+                    controller: 'divmapCtrl'
+                })
 
         });
 

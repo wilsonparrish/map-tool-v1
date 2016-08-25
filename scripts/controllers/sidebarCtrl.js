@@ -3,6 +3,9 @@
 
     angular.module('app')
         .controller('sidebarCtrl', function ($scope, $firebaseAuth) {
+
+            $scope.hideMenu = false;
+
             var auth = $firebaseAuth();
             $scope.signIn = function () {
                 $scope.firebaseUser = null;

@@ -19,6 +19,14 @@ html, body {
     padding: 15px;
 }
 
+.hidden-menu {
+    display: none;
+    /*margin-left: -200px;*/
+}
+
+#hide-menu-btn {
+    float:right;
+}
 
 /*home styles*/
 #home-banner {
@@ -33,7 +41,7 @@ html, body {
     padding: 30px;
 }
 
-/* map styles*/
+/* gridmap styles*/
 #grid-container {
     overflow: scroll;
     padding: 30px;
@@ -68,4 +76,29 @@ html, body {
 #recent-rolls {
     border: 1px solid black;
     padding: 3px;
+}
+
+/* divmap styles*/
+#divmap-content {
+    line-height: 30px;
+    padding: 20px;
+}
+
+#map-container {
+    line-height: 30px;
+    overflow: scroll;    
+}
+
+#divmap {
+    line-height: 30px;
+}
+
+.cell {
+    float: left;
+    /*display: inline-block;*/
+    border: 1px grey solid;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
 }

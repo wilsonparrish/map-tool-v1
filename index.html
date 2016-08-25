@@ -12,11 +12,11 @@
 
 <body ng-app="app">
     <div class="w3-row">
-        <div class="w3-col m4 l3 w3-light-blue w3-card-8" id="sidebar" ng-controller="sidebarCtrl">
+        <div ng-class="hideMenu ? 'w3-col w3-light-blue w3-card-8 m1 l1' : 'w3-col w3-light-blue w3-card-8 m4 l3'" id="sidebar" ng-controller="sidebarCtrl">
             <header class="w3-container w3-blue-grey">
                 <h1>Table Top Tools</h1>
             </header>
-            <div class="sidebar-content">
+            <div ng-class="hideMenu ? 'hidden-menu' : 'sidebar-content'">
                 <div class="w3-card-8 w3-white feature-card">
                     <div class="w3-container w3-indigo">
                         <img src="/images/weapons_medieval_helmet-512.png" style="width:30px;">
@@ -44,6 +44,9 @@
                             </li>
                             <li>
                                 <a ui-sref="gridmap">Gridmap</a>
+                            </li>
+                            <li>
+                                <a ui-sref="divmap">DivMap</a>
                             </li>
                         </ul>
                     </div>
@@ -77,9 +80,12 @@
                 </div>
                 <br>
             </div>
+            <div class="sidebar-content">
+                <button id="hide-menu-btn" class="w3-btn w3-indigo" ng-click="hideMenu=!hideMenu">Toggle Menu</button>
+            </div>
         </div>
 
-        <ui-view class="w3-col m8 l9"></ui-view>
+        <ui-view ng-class="hideMenu ? 'w3-col m12 l12' : 'w3-col m8 l9'"></ui-view>
     </div>
 
     <!-- AngularJS -->
@@ -105,6 +111,7 @@
     <script src="scripts/app.module.js"></script>
     <script src="scripts/app.routes.js"></script>
     <script src="scripts/controllers/mapCtrl.js"></script>
+    <script src="scripts/controllers/divmapCtrl.js"></script>
     <script src="scripts/controllers/sidebarCtrl.js"></script>
 
 </body>

@@ -26,32 +26,52 @@
                     }, 1500);
                 }
             }
-
-            $scope.paintColorsArray = [
-                {
-                    background: 'red'
-                }, {
-                    background: 'purple'
-                }, {
-                    background: 'blue'
-                }, {
-                    background: 'green'
-                }, {
-                    background: 'yellow'
-                }, {
-                    background: 'orange'
-                }, {
-                    background: 'black'
-                }, {
-                    background: 'grey'
-                }, {
-                    background: 'white'
-                },
-            ];
-
+            
             $scope.applyColor = function (color) {
                 $scope.activeColor = color;
             };
+
+            $scope.paintColorsArray = [
+                {
+                    background: 'pink'
+                },
+                {
+                    background: 'red'
+                },
+                {
+                    background: 'purple'
+                },
+                {
+                    background: 'lightblue'
+                },
+                {
+                    background: 'blue'
+                },
+                {
+                    background: 'green'
+                },
+                {
+                    background: 'lightgreen'
+                },
+                {
+                    background: 'yellow'
+                },
+                {
+                    background: 'gold'
+                },
+                {
+                    background: 'orange'
+                },
+                {
+                    background: 'black'
+                },
+                {
+                    background: 'grey'
+                },
+                {
+                    background: 'white'
+                },
+            ];
 
         })
 

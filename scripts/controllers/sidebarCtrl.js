@@ -19,6 +19,10 @@
                 });
             };
 
+            $scope.hideCard = function (property) {
+                $scope[property] = !$scope[property];
+            }
+
             /*
             *functionality for dicebag
             */

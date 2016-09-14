@@ -1,7 +1,10 @@
 <div class="w3-row" id="divmap-content">
     <div id="map-container" class="w3-col m12 l12">
+        <div ng-show="rendering" id="renderScreen" ng-style="{width: mapWidth}">
+            <img src="images/giphy.gif" alt="">
+        </div>
         <div id="divmap" ng-style="{width: mapWidth}">
-            <div ng-repeat="cell in cellsArray" class="cell"></div>
+            <div ng-repeat="cell in cellsArray track by $index" class="cell"></div>
         </div>
     </div>
 </div>

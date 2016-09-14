@@ -117,6 +117,16 @@ html, body {
     margin: 0;
 }
 
+.paintColor {
+    float: left;
+    /*display: inline-block;*/
+    border: 1px grey solid;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 5px;
+}
+
 /* divmapMaker styles */
 #map-size {
     padding: 15px;

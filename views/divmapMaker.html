@@ -7,19 +7,34 @@
         </div>
         <div id="divmap" ng-style="{width: mapWidth}">
             <div ng-hide="rendering">
-                <div ng-repeat="cell in cellsArray track by $index" class="cell" ng-style="{'background-color': cell.background}"></div>
+                <div ng-repeat="cell in cellsArray track by $index" class="cell" ng-style="{'background-color': cell.background}" ng-click="cell.background = activeColor"></div>
             </div>
         </div>
     </div>
 </div>
 <div class="w3-row" id="map-size">
-    <h2>Select Map Size</h2>
-    <div>
-        <label for="height">Height</label><br>
-        <input type="number" name="height" ng-model="mapDivHeight" ng-change="createMap()">
+    <div class="w3-col m4 l4">
+        <h2>Select Map Size</h2>
+        <div>
+            <label for="height">Height</label><br>
+            <input type="number" name="height" ng-model="mapDivHeight" ng-change="createMap()">
+        </div>
+        <div>
+            <label for="width">Width</label><br>
+            <input type="number" name="width" ng-model="mapDivWidth" ng-change="createMap()">
+        </div>
+        <br>
+        <hr>
+        <div>
+            <label for="map-name">Map Name</label><br>
+            <input type="number" name="map-name" ng-model="mapName">
+        </div>
+        <br>
+        <button class="w3-btn w3-indigo">Save</button>
     </div>
-    <div>
-        <label for="width">Width</label><br>
-        <input type="number" name="width" ng-model="mapDivWidth" ng-change="createMap()">
+    <div class="w3-col m8 l8">
+        <h2>Tile Palette</h2>
+        <span>Click the color or background you would like to apply</span><br>
+        <div ng-repeat="paintColor in paintColorsArray track by $index" class="paintColor" ng-style="{'background-color': paintColor.background}" ng-click="applyColor(paintColor.background)"></div>
     </div>
 </div>

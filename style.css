@@ -86,16 +86,21 @@ html, body {
 
 #map-container {
     line-height: 30px;
-    overflow: scroll;    
+    overflow: scroll;
 }
 
 #render-screen {
     z-index: 100;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(255, 255, 255, .7);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
+
 #render-screen > img {
-    margin-top: 45%;
-    margin-left: 45%;
+    width: 100px;
+    height: 100px;
 }
 
 #divmap {
@@ -110,4 +115,9 @@ html, body {
     width: 30px;
     padding: 0;
     margin: 0;
+}
+
+/* divmapMaker styles */
+#map-size {
+    padding: 15px;
 }

@@ -20,7 +20,11 @@
                     templateUrl: '../views/divmap.html',
                     controller: 'divmapCtrl'
                 })
-
+                .state('divmapMaker', {
+                    url: '/divmapMaker',
+                    templateUrl: '../views/divmapMaker.html',
+                    controller: 'divmapMakerCtrl'
+                })
         });
 
 

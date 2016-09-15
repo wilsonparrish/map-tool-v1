@@ -7,7 +7,8 @@
         </div>
         <div id="divmap" ng-style="{width: mapWidth}">
             <div ng-hide="rendering">
-                <div ng-repeat="cell in cellsArray track by $index" class="cell" ng-style="{'background-color': cell.background}" ng-click="cell.background = activeColor"></div>
+                <div ng-repeat="cell in cellsArray track by $index" class="cell" ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': '30px'}"
+                    ng-click="cell.backgroundUrl = activeCustom; cell.background = activeColor"></div>
             </div>
         </div>
     </div>
@@ -27,7 +28,7 @@
         <hr>
         <div>
             <label for="map-name">Map Name</label><br>
-            <input type="number" name="map-name" ng-model="mapName">
+            <input type="text" name="map-name" ng-model="mapName">
         </div>
         <br>
         <button class="w3-btn w3-indigo">Save</button>
@@ -35,6 +36,19 @@
     <div class="w3-col m8 l8">
         <h2>Tile Palette</h2>
         <span>Click the color or background you would like to apply</span><br>
-        <div ng-repeat="paintColor in paintColorsArray track by $index" class="paintColor" ng-style="{'background-color': paintColor.background}" ng-click="applyColor(paintColor.background)"></div>
+        <div ng-repeat="paintColor in paintColorsArray track by $index" class="paintColor" ng-style="{'background-color': paintColor.background}"
+            ng-click="applyColor(paintColor.background)"></div>
+        <hr>
+        <h2>Custom tiles</h2>
+        <div ng-repeat="customTile in customTiles track by $index" class="customTile" ng-style="{'background-image': 'url(' + customTile.backgroundUrl + ')', 'background-size': '30px'}"
+            ng-click="applyCustom(customTile.backgroundUrl)"></div>
+        <div class="customTile" ng-click="adding = !adding">+</div>
+        <br><br>
+        <div id="add-custom-tile" ng-show="adding">
+            <label for="newUrl">Enter Url for new Tile Image</label><br>
+            <input type="text" name="newUrl" ng-model="newUrl">
+            <button class="w3-btn w3-indigo" ng-click="adding = !adding; addCustom()">Add</button>
+            <button class="w3-btn w3-red" ng-click="adding = !adding">Cancel</button>
+        </div>
     </div>
 </div>

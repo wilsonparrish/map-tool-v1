@@ -99,6 +99,9 @@
                 },
                 {
                     backgroundUrl: "http://the-lost-and-the-damned.664610.n2.nabble.com/file/n7581201/10857-v6.jpg"
+                },
+                {
+                    backgroundUrl: "https://s-media-cache-ak0.pinimg.com/236x/2e/9d/db/2e9ddbceb4e83c8c42471dc00ad1935f.jpg"
                 }
             ];
 

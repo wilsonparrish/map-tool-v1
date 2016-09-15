@@ -21,7 +21,6 @@ html, body {
 
 .hidden-menu {
     display: none;
-    /*margin-left: -200px;*/
 }
 
 #hide-menu-btn {

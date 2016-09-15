@@ -12,7 +12,7 @@
 
 <body ng-app="app">
     <div class="w3-row">
-        <div ng-class="hideMenu ? 'w3-col w3-light-blue w3-card-8 m1 l1' : 'w3-col w3-light-blue w3-card-8 m4 l3'" id="sidebar" ng-controller="sidebarCtrl">
+        <div ng-class="hideMenu ? 'w3-col w3-light-blue w3-card-8 m2 l1' : 'w3-col w3-light-blue w3-card-8 m4 l3'" id="sidebar" ng-controller="sidebarCtrl">
             <header class="w3-container w3-blue-grey">
                 <h1>Table Top Tools</h1>
             </header>
@@ -72,6 +72,7 @@
                             <option value="10">d10</option>
                             <option value="12">d12</option>
                             <option value="20">d20</option>
+                            <option value="100">d100</option>                            
                         </select> +
                             <input type="number" id="dice-modifier">&nbsp&nbsp
                             <button id="roll-button">Roll!</button>
@@ -88,7 +89,7 @@
             </div>
         </div>
 
-        <ui-view ng-class="hideMenu ? 'w3-col m12 l12' : 'w3-col m8 l9'"></ui-view>
+        <ui-view ng-class="hideMenu ? 'w3-col m10 l11' : 'w3-col m8 l9'"></ui-view>
     </div>
 
     <!-- AngularJS -->

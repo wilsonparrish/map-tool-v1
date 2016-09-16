@@ -2,7 +2,9 @@
     "use strict";
 
     angular.module('app')
-        .controller('divmapMakerCtrl', function ($scope, $timeout) {
+        .controller('divmapMakerCtrl', function ($scope, $timeout, $firebaseArray, $firebaseObject) {
+
+            var fbref = firebase.database().ref();
 
             $scope.cellsArray = [];
             $scope.mapWidth;
@@ -11,12 +13,9 @@
             $scope.activeCustom;
             $scope.adding = false;
             $scope.addingTooltip = false;
-
             $scope.gridSize = 30;
 
-            $scope.createMap = function (newRender) {
-                $scope.mapWidth = $scope.mapDivWidth * $scope.gridSize + 'px';
-                $scope.mapHeight = $scope.mapDivHeight * $scope.gridSize + 'px';
+            $scope.createMap = function (newRender, chosenMap) {
                 if ($scope.mapDivHeight > 0 && $scope.mapDivWidth > 0 && newRender) {
                     $scope.cellsArray = [];
                     $scope.rendering = true;
@@ -30,7 +29,39 @@
                         $scope.rendering = false;
                     }, 1500);
                 }
+                if (chosenMap) {
+                    $scope.cellsArray = chosenMap.map;
+                    $scope.rendering = true;
+                    $scope.mapDivWidth = chosenMap.width;
+                    $scope.mapDivHeight. chosenMap.height;
+                    $scope.gridSize = chosenMap.gridSize;
+                    $timeout(function () {
+                        $scope.rendering = false;
+                    }, 1500);
+                }
+                $scope.mapWidth = $scope.mapDivWidth * $scope.gridSize + 'px';
+                $scope.mapHeight = $scope.mapDivHeight * $scope.gridSize + 'px';
             }
+
+            var mapsRef = fbref.child("savedMaps");
+            $scope.savedMaps = $firebaseArray(mapsRef);
+
+            $scope.saveMap = function () {
+                var mapData = {
+                    map: $scope.cellsArray,
+                    height: $scope.mapDivHeight,
+                    width: $scope.mapDivWidth,
+                    name: $scope.mapName,
+                    gridSize: $scope.gridSize
+                };
+                console.log('saving: ', mapData);
+                $scope.savedMaps.$add(mapData).then(function(ref){
+                    console.log('saved: ', ref);
+                })
+                $scope.mapName = "";
+            }
+
+            // Everything having to do with tile colors below here
             
             $scope.applyColor = function (color) {
                 $scope.activeColor = color;
@@ -43,11 +74,14 @@
             };
 
             $scope.addCustom = function () {
-                $scope.customTiles.push({
+                $scope.customTiles.$add({
                     backgroundUrl: "'" + $scope.newUrl + "'"
                 })
                 $scope.newUrl = '';
             };
+
+            var customTilesRef = fbref.child("customTiles");
+            $scope.customTiles = $firebaseArray(customTilesRef);   
 
             $scope.paintColorsArray = [
                 {
@@ -96,25 +130,7 @@
                     background: 'white'
                 },
             ];
-
-            $scope.customTiles = [
-                {
-                    backgroundUrl: "https://s-media-cache-ak0.pinimg.com/236x/ea/ec/66/eaec665dea9111ac6029b11d65ff9e75.jpg"           
-                },
-                {
-                    backgroundUrl: "http://the-lost-and-the-damned.664610.n2.nabble.com/file/n7581201/10857.jpg"
-                },
-                {
-                    backgroundUrl: "http://www.dundjinni.com/forums/uploads/aegean/67Z_fractured_floor6_ae.png"
-                },
-                {
-                    backgroundUrl: "http://the-lost-and-the-damned.664610.n2.nabble.com/file/n7581201/10857-v6.jpg"
-                },
-                {
-                    backgroundUrl: "https://s-media-cache-ak0.pinimg.com/236x/2e/9d/db/2e9ddbceb4e83c8c42471dc00ad1935f.jpg"
-                }
-            ];
-
+            
         })
 
 } ());

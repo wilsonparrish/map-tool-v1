@@ -41,7 +41,12 @@
             <input type="text" name="map-name" ng-model="mapName">
         </div>
         <br>
-        <button class="w3-btn w3-indigo">Save</button>
+        <button class="w3-btn w3-indigo" ng-click="saveMap()">Save</button>
+        <br>
+        <hr>
+        <h2>Or Edit a Map</h2>
+        <label for="saved-maps">Saved Maps</label><br>
+        <select name="saved-maps" id="" ng-options="map as map.name for map in savedMaps" ng-model="chosenMap" ng-change="createMap(false, chosenMap)"></select>
     </div>
     <div class="w3-col m8 l8">
         <h2>Tile Palette</h2>

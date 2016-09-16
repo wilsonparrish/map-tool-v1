@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "angular": "^1.5.8",
+    "angularfire": "^2.0.2",
+    "firebase": "^3.4.0",
     "interact.js": "^1.2.6",
     "live-server": "^1.0.0"
   },

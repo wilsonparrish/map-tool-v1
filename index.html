@@ -11,7 +11,7 @@
 </head>
 
 <body ng-app="app">
-    <div class="w3-row" ng-controller="sidebarCtrl">
+    <div class="w3-row" ng-controller="sidebarCtrl" class="main-body">
         <div class="w3-col w3-light-blue w3-card-8" ng-class="hideMenu ? 'm2 l1' : 'm4 l3'" id="sidebar">
             <header class="w3-container w3-blue-grey">
                 <h1>Table Top Tools</h1>
@@ -93,6 +93,9 @@
         <ui-view class="w3-col" ng-class="hideMenu ? 'm10 l11' : 'm8 l9'"></ui-view>
     </div>
 
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>

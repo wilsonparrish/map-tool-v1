@@ -30,10 +30,10 @@
                     }, 1500);
                 }
                 if (chosenMap) {
-                    $scope.cellsArray = chosenMap.map;
+                    $scope.cellsArray = JSON.parse(chosenMap.map);
                     $scope.rendering = true;
                     $scope.mapDivWidth = chosenMap.width;
-                    $scope.mapDivHeight. chosenMap.height;
+                    $scope.mapDivHeight = chosenMap.height;
                     $scope.gridSize = chosenMap.gridSize;
                     $timeout(function () {
                         $scope.rendering = false;
@@ -48,7 +48,7 @@
 
             $scope.saveMap = function () {
                 var mapData = {
-                    map: $scope.cellsArray,
+                    map: JSON.stringify($scope.cellsArray),
                     height: $scope.mapDivHeight,
                     width: $scope.mapDivWidth,
                     name: $scope.mapName,

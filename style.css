@@ -11,9 +11,9 @@ html, body {
     margin: 0;
 }
 
-#sidebar {
-    height: 1200px;
-}
+/*#sidebar {
+    height: 1500px;
+}*/
 
 .card-header {
     cursor: pointer;

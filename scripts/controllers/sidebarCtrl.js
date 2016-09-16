@@ -72,6 +72,10 @@
                 document.getElementById('recent-rolls').textContent = rollString;
             }
 
+            // Jquery to help the sidebar work right
+            var height = $('.main-body').height();
+            $('#sidebar').height(height);
+
         });
 
 } ());

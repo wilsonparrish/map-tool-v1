@@ -8,7 +8,7 @@
         <div id="divmap" ng-style="{width: mapWidth}">
             <div ng-hide="rendering">
                 <div ng-repeat="cell in cellsArray track by $index" class="cell" title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : ''"
-                    ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': '30px'}"
+                    ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': gridSize + 'px', 'height': gridSize + 'px', 'width': gridSize + 'px'  }"
                     ng-click="cell.backgroundUrl = activeCustom; cell.background = activeColor; addingTooltip = true; tipId = $index"></div>
             </div>
         </div>
@@ -19,11 +19,20 @@
         <h2>Select Map Size</h2>
         <div>
             <label for="height">Height</label><br>
-            <input type="number" name="height" ng-model="mapDivHeight" ng-change="createMap()">
+            <input type="number" name="height" ng-model="mapDivHeight" ng-change="createMap(true)">
         </div>
         <div>
             <label for="width">Width</label><br>
-            <input type="number" name="width" ng-model="mapDivWidth" ng-change="createMap()">
+            <input type="number" name="width" ng-model="mapDivWidth" ng-change="createMap(true)">
+        </div>
+        <br>
+        <div>
+            <label for="gridSize">Grid Size</label>
+            <select name="gridSize" ng-model="gridSize" ng-change="createMap(false)">
+                <option value="10">small</option>
+                <option value="30">medium</option>
+                <option value="50">large</option>                
+            </select>
         </div>
         <br>
         <hr>

@@ -12,11 +12,13 @@
             $scope.adding = false;
             $scope.addingTooltip = false;
 
-            $scope.createMap = function () {
-                $scope.mapWidth = $scope.mapDivWidth * 30 + 'px';
-                $scope.mapHeight = $scope.mapDivHeight * 30 + 'px';
-                $scope.cellsArray = [];
-                if ($scope.mapDivHeight > 0 && $scope.mapDivWidth > 0) {
+            $scope.gridSize = 30;
+
+            $scope.createMap = function (newRender) {
+                $scope.mapWidth = $scope.mapDivWidth * $scope.gridSize + 'px';
+                $scope.mapHeight = $scope.mapDivHeight * $scope.gridSize + 'px';
+                if ($scope.mapDivHeight > 0 && $scope.mapDivWidth > 0 && newRender) {
+                    $scope.cellsArray = [];
                     $scope.rendering = true;
                     var mapSize = $scope.mapDivWidth * $scope.mapDivHeight;
                     for (var i = 0; i < mapSize; i++) {

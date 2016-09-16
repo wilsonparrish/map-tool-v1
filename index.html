@@ -18,7 +18,7 @@
             </header>
             <div ng-class="hideMenu ? 'hidden-menu' : 'sidebar-content'">
                 <div class="w3-card-8 w3-white feature-card">
-                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideProfile')">
+                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideProfile')" title="Click to Hide">
                         <img src="/images/weapons_medieval_helmet-512.png" style="width:30px;">
                         <h3 style="display: inline-block">Your Profile</h3>
                     </div>
@@ -33,7 +33,7 @@
                 </div>
                 <br>
                 <div class="w3-card-8 w3-white feature-card">
-                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideNav')">
+                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideNav')" title="Click to Hide">
                         <img src="/images/compas-152-201442.png" style="width:30px;">
                         <h3 style="display: inline-block">Navigation</h3>
                     </div>
@@ -56,7 +56,7 @@
                 </div>
                 <br>
                 <div class="w3-card-8 w3-white feature-card">
-                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideDice')">
+                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideDice')" title="Click to Hide">
                         <img src="/images/dice-152-92041.png" style="width:30px;">
                         <h3 style="display: inline-block">Dice roller</h3>
                     </div>
@@ -75,7 +75,8 @@
                             <option value="100">d100</option>                            
                         </select> +
                             <input type="number" id="dice-modifier">&nbsp&nbsp
-                            <button id="roll-button">Roll!</button>
+                            <br><br>
+                            <button class="w3-btn w3-indigo" id="roll-button">Roll!</button>&nbsp&nbsp
                             <span id="roll"></span>
                         </div>
                         <br> Recent Rolls

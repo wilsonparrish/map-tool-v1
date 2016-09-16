@@ -7,8 +7,9 @@
         </div>
         <div id="divmap" ng-style="{width: mapWidth}">
             <div ng-hide="rendering">
-                <div ng-repeat="cell in cellsArray track by $index" class="cell" ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': '30px'}"
-                    ng-click="cell.backgroundUrl = activeCustom; cell.background = activeColor"></div>
+                <div ng-repeat="cell in cellsArray track by $index" class="cell" title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : ''"
+                    ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': '30px'}"
+                    ng-click="cell.backgroundUrl = activeCustom; cell.background = activeColor; addingTooltip = true; tipId = $index"></div>
             </div>
         </div>
     </div>
@@ -44,11 +45,20 @@
             ng-click="applyCustom(customTile.backgroundUrl)"></div>
         <div class="customTile" ng-click="adding = !adding">+</div>
         <br><br>
+        <button class="w3-btn w3-red" ng-click="activeCustom = undefined; activeColor = undefined">Clear Brush</button>
+        <br><br>
         <div id="add-custom-tile" ng-show="adding">
             <label for="newUrl">Enter Url for new Tile Image</label><br>
             <input type="text" name="newUrl" ng-model="newUrl">
             <button class="w3-btn w3-indigo" ng-click="adding = !adding; addCustom()">Add</button>
             <button class="w3-btn w3-red" ng-click="adding = !adding">Cancel</button>
+        </div>
+        <div id="add-tooltip" ng-show="addingTooltip">
+            <hr>
+            <label for="newTip">Enter Tooltip for Cell {{tipId}}</label><br>
+            <textarea type="text" name="newTip" ng-model="cellsArray[tipId].tooltip">
+            <button class="w3-btn w3-indigo" ng-click="addingTooltip = !addingTooltip">Add</button>
+            <button class="w3-btn w3-red" ng-click="addingTooltip = !addingTooltip">Cancel</button>
         </div>
     </div>
 </div>

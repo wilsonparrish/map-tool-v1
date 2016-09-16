@@ -12,7 +12,11 @@ html, body {
 }
 
 #sidebar {
-    height: 1000px;
+    height: 1200px;
+}
+
+.card-header {
+    cursor: pointer;
 }
 
 .sidebar-content, .feature-card-content {
@@ -72,6 +76,10 @@ html, body {
     margin: 5px 0;
 }
 
+#roll {
+    font-size: 20px;
+}
+
 #recent-rolls {
     border: 1px solid black;
     padding: 3px;
@@ -109,16 +117,21 @@ html, body {
 .cell, .paintColor, .customTile {
     float: left;
     /*display: inline-block;*/
-    border: 1px lightgray solid;
+    border: 1px gray solid;
     height: 30px;
     width: 30px;
     padding: 0;
     margin: 0;
-    color: lightgray;
+    color: gray;
     text-align: center;
     font-size: 20px;
     line-height: 24px;
     cursor: pointer;
+}
+
+.hasTooltip {
+    border: 1px gold solid;
+    border-top-left-radius: 20%;
 }
 
 /* divmapMaker styles */

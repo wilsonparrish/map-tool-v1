@@ -10,6 +10,7 @@
             $scope.activeColor;
             $scope.activeCustom;
             $scope.adding = false;
+            $scope.addingTooltip = false;
 
             $scope.createMap = function () {
                 $scope.mapWidth = $scope.mapDivWidth * 30 + 'px';
@@ -19,7 +20,9 @@
                     $scope.rendering = true;
                     var mapSize = $scope.mapDivWidth * $scope.mapDivHeight;
                     for (var i = 0; i < mapSize; i++) {
-                        $scope.cellsArray.push({});
+                        $scope.cellsArray.push({
+                            tooltip: ""
+                        });
                     }
                     $timeout(function () {
                         $scope.rendering = false;
@@ -37,12 +40,11 @@
                 $scope.activeColor = undefined;                
             };
 
-            $scope.addCustom = function() {
+            $scope.addCustom = function () {
                 $scope.customTiles.push({
                     backgroundUrl: "'" + $scope.newUrl + "'"
                 })
                 $scope.newUrl = '';
-                
             };
 
             $scope.paintColorsArray = [
@@ -75,6 +77,12 @@
                 },
                 {
                     background: 'orange'
+                },
+                {
+                    background: 'saddlebrown'
+                },
+                {
+                    background: 'brown'
                 },
                 {
                     background: 'black'

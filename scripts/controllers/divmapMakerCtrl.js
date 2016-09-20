@@ -14,6 +14,21 @@
             $scope.adding = false;
             $scope.addingTooltip = false;
             $scope.gridSize = 30;
+            $scope.mouseDragging;
+
+            $scope.setDragging = function (bool) {
+                console.log('setting');
+                $scope.mouseDragging = bool;
+            }
+
+            $scope.mouseDragCheck = function (cell) {
+                console.log('checking...', $scope.mouseDragging);
+                if ($scope.mouseDragging) {
+                    cell.backgroundUrl = $scope.activeCustom;
+                    cell.background = $scope.activeColor;
+                    console.log('changing...');
+                }
+            }
 
             $scope.createMap = function (newRender, chosenMap) {
                 if ($scope.mapDivHeight > 0 && $scope.mapDivWidth > 0 && newRender) {
@@ -55,22 +70,22 @@
                     gridSize: $scope.gridSize
                 };
                 console.log('saving: ', mapData);
-                $scope.savedMaps.$add(mapData).then(function(ref){
+                $scope.savedMaps.$add(mapData).then(function (ref) {
                     console.log('saved: ', ref);
                 })
                 $scope.mapName = "";
             }
 
             // Everything having to do with tile colors below here
-            
+
             $scope.applyColor = function (color) {
                 $scope.activeColor = color;
-                $scope.activeCustom = undefined;                
+                $scope.activeCustom = undefined;
             };
 
             $scope.applyCustom = function (url) {
                 $scope.activeCustom = url;
-                $scope.activeColor = undefined;                
+                $scope.activeColor = undefined;
             };
 
             $scope.addCustom = function () {
@@ -81,7 +96,7 @@
             };
 
             var customTilesRef = fbref.child("customTiles");
-            $scope.customTiles = $firebaseArray(customTilesRef);   
+            $scope.customTiles = $firebaseArray(customTilesRef);
 
             $scope.paintColorsArray = [
                 {
@@ -130,7 +145,7 @@
                     background: 'white'
                 },
             ];
-            
+
         })
 
 } ());

@@ -9,7 +9,8 @@
             <div ng-hide="rendering">
                 <div ng-repeat="cell in cellsArray track by $index" class="cell" title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : ''"
                     ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': gridSize + 'px', 'height': gridSize + 'px', 'width': gridSize + 'px'  }"
-                    ng-click="cell.backgroundUrl = activeCustom; cell.background = activeColor; addingTooltip = true; tipId = $index"></div>
+                    ng-mousedown="cell.backgroundUrl = activeCustom; cell.background = activeColor; addingTooltip = true; tipId = $index; setDragging(true);" ng-mouseup="setDragging(false)"
+                    ng-mouseenter="mouseDragCheck(cell)"></div>
             </div>
         </div>
     </div>

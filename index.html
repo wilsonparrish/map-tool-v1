@@ -43,9 +43,6 @@
                                 <a ui-sref="home">Home</a>
                             </li>
                             <li>
-                                <a ui-sref="gridmap">Gridmap</a>
-                            </li>
-                            <li>
                                 <a ui-sref="divmap">DivMap</a>
                             </li>
                             <li>
@@ -84,6 +81,29 @@
                     </div>
                 </div>
                 <br>
+                <div class="w3-card-8 w3-white feature-card">
+                    <div class="w3-container w3-indigo card-header" ng-click="hideCard('logBooks')" title="Click to Hide">
+                        <img src="/images/compas-152-201442.png" style="width:30px;">
+                        <h3 style="display: inline-block">Log Books</h3>
+                    </div>
+                    <div class="feature-card-content" ng-hide="logBooks">
+                        <ul>
+                            <li>
+                                <a ui-sref="home">Home</a>
+                            </li>
+                            <li>
+                                <a ui-sref="gridmap">Gridmap</a>
+                            </li>
+                            <li>
+                                <a ui-sref="divmap">DivMap</a>
+                            </li>
+                            <li>
+                                <a ui-sref="divmapMaker">DivMap Maker</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
             </div>
             <div class="sidebar-content">
                 <button id="hide-menu-btn" class="w3-btn w3-indigo" ng-click="hideMenu=!hideMenu">Toggle Menu</button>
@@ -113,12 +133,10 @@
     </script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
-    <!-- Interactjs -->
-    <script src="node_modules/interact.js/dist/interact.js"></script>
+
     <!-- Project Scripts -->
     <script src="scripts/app.module.js"></script>
     <script src="scripts/app.routes.js"></script>
-    <script src="scripts/controllers/mapCtrl.js"></script>
     <script src="scripts/controllers/divmapCtrl.js"></script>
     <script src="scripts/controllers/divmapMakerCtrl.js"></script>
     <script src="scripts/controllers/sidebarCtrl.js"></script>

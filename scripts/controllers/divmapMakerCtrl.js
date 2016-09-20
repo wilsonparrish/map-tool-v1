@@ -17,16 +17,16 @@
             $scope.mouseDragging;
 
             $scope.setDragging = function (bool) {
-                console.log('setting');
+                // console.log('setting');
                 $scope.mouseDragging = bool;
             }
 
             $scope.mouseDragCheck = function (cell) {
-                console.log('checking...', $scope.mouseDragging);
+                // console.log('checking...', $scope.mouseDragging);
                 if ($scope.mouseDragging) {
                     cell.backgroundUrl = $scope.activeCustom;
                     cell.background = $scope.activeColor;
-                    console.log('changing...');
+                    // console.log('changing...');
                 }
             }
 

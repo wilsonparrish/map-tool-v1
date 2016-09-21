@@ -5,6 +5,7 @@
         .controller('divmapMakerCtrl', function ($scope, $timeout, $firebaseArray, $firebaseObject) {
 
             var fbref = firebase.database().ref();
+            var mapBeingEdited;
 
             $scope.cellsArray = [];
             $scope.mapWidth;
@@ -50,6 +51,9 @@
                     $scope.mapDivWidth = chosenMap.width;
                     $scope.mapDivHeight = chosenMap.height;
                     $scope.gridSize = chosenMap.gridSize;
+                    mapBeingEdited = chosenMap.name;
+                    $scope.mapName = chosenMap.name;
+                    $scope.updatingMap = true;
                     $timeout(function () {
                         $scope.rendering = false;
                     }, 1500);
@@ -60,8 +64,9 @@
 
             var mapsRef = fbref.child("savedMaps");
             $scope.savedMaps = $firebaseArray(mapsRef);
+            console.log($scope.savedMaps);
 
-            $scope.saveMap = function () {
+            $scope.saveMap = function (mapName) {
                 var mapData = {
                     map: JSON.stringify($scope.cellsArray),
                     height: $scope.mapDivHeight,
@@ -70,11 +75,33 @@
                     gridSize: $scope.gridSize
                 };
                 console.log('saving: ', mapData);
-                $scope.savedMaps.$add(mapData).then(function (ref) {
-                    console.log('saved: ', ref);
-                })
-                $scope.mapName = "";
+                if (mapName) {
+                    for (var i = 0; i < $scope.savedMaps.length; i++) {
+                        if ($scope.savedMaps[i].name === mapName) {
+                            console.log('saving map at index ' + i + ' with an $id of ' + $scope.savedMaps[i].$id + ' which should be equal to ' + $scope.savedMaps.$keyAt(i));
+                            $scope.savedMaps[i].map = mapData.map;
+                            $scope.savedMaps[i].height = mapData.height;
+                            $scope.savedMaps[i].width = mapData.width;
+                            $scope.savedMaps[i].name = mapData.name;
+                            $scope.savedMaps[i].gridSize = mapData.gridSize;
+                            $scope.savedMaps.$save($scope.savedMaps.$keyAt(i)).then(function (ref) {
+                                console.log('saved: ', ref);
+                            }, function (err) {
+                                // alert("there was an error saving this map", err);
+                                console.log(err);
+                            })
+                        }
+                    }
+                } else {
+                    $scope.savedMaps.$add(mapData).then(function (ref) {
+                        console.log('saved: ', ref);
+                    }, function (err) {
+                        // alert("there was an error saving this map", err);
+                        console.log(err);
+                    })
+                }
             }
+
 
             // Everything having to do with tile colors below here
 
@@ -90,8 +117,10 @@
 
             $scope.addCustom = function () {
                 $scope.customTiles.$add({
+                    name: $scope.customTileName,
                     backgroundUrl: "'" + $scope.newUrl + "'"
                 })
+                $scope.customTileName = '';
                 $scope.newUrl = '';
             };
 

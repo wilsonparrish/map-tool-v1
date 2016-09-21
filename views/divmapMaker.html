@@ -5,7 +5,7 @@
             <br><br>
             <img src="images/giphy.gif">
         </div>
-        <div id="divmap" ng-style="{width: mapWidth}">
+        <div id="divmap" ng-style="{width: mapWidth}" ng-mouseleave="setDragging(false)">
             <div ng-hide="rendering">
                 <div ng-repeat="cell in cellsArray track by $index" class="cell" title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : ''"
                     ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': gridSize + 'px', 'height': gridSize + 'px', 'width': gridSize + 'px'  }"
@@ -42,7 +42,8 @@
             <input type="text" name="map-name" ng-model="mapName">
         </div>
         <br>
-        <button class="w3-btn w3-indigo" ng-click="saveMap()">Save</button>
+        <button class="w3-btn w3-indigo" ng-click="saveMap()" ng-hide="updatingMap">Save</button>
+        <button class="w3-btn w3-indigo" ng-click="saveMap(mapName)" ng-show="updatingMap">Update Map</button>        
         <br>
         <hr>
         <h2>Or Edit a Map</h2>
@@ -56,7 +57,7 @@
             ng-click="applyColor(paintColor.background)"></div>
         <hr>
         <h2>Custom tiles</h2>
-        <div ng-repeat="customTile in customTiles track by $index" class="customTile" ng-style="{'background-image': 'url(' + customTile.backgroundUrl + ')', 'background-size': '30px'}"
+        <div ng-repeat="customTile in customTiles track by $index" title={{customTile.name}} class="customTile" ng-style="{'background-image': 'url(' + customTile.backgroundUrl + ')', 'background-size': '30px'}"
             ng-click="applyCustom(customTile.backgroundUrl)"></div>
         <div class="customTile" ng-click="adding = !adding">+</div>
         <br><br>
@@ -64,6 +65,9 @@
         <br><br>
         <div id="add-custom-tile" ng-show="adding">
             <label for="newUrl">Enter Url for new Tile Image</label><br>
+            <label for="customTileName">Name</label><br>
+            <input type="text" name="customTileName" ng-model="customTileName"><br>
+            <label for="newUrl">Image Url</label><br>            
             <input type="text" name="newUrl" ng-model="newUrl">
             <button class="w3-btn w3-indigo" ng-click="adding = !adding; addCustom()">Add</button>
             <button class="w3-btn w3-red" ng-click="adding = !adding">Cancel</button>

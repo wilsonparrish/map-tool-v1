@@ -14,10 +14,22 @@
                 auth.$signInWithPopup('google').then(function (firebaseUser) {
                     $scope.firebaseUser = firebaseUser;
                     console.log(firebaseUser);
+                    localStorage.setItem('firebaseUser', JSON.stringify(firebaseUser));
                 }).catch(function (error) {
                     $scope.error = error;
                 });
             };
+            
+            // Simple auth solution for now
+            if(localStorage.getItem("firebaseUser")){
+                $scope.firebaseUser = JSON.parse(localStorage.getItem("firebaseUser"));
+            }
+
+            $scope.logout = function () {
+                localStorage.removeItem('firebaseUser');
+                $scope.firebaseUser = null;
+            }
+
 
             $scope.hideCard = function (property) {
                 $scope[property] = !$scope[property];

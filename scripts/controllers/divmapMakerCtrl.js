@@ -41,6 +41,7 @@
                             tooltip: ""
                         });
                     }
+                    $scope.updatingMap = false;                    
                     $timeout(function () {
                         $scope.rendering = false;
                     }, 1500);

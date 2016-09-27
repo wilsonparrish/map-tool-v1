@@ -2,8 +2,9 @@
     "use strict";
 
     angular.module('app')
-        .controller('sidebarCtrl', function ($scope, $firebaseAuth) {
+        .controller('sidebarCtrl', function ($scope, $firebaseAuth, $firebaseArray, $firebaseObject) {
 
+            var fbref = firebase.database().ref();
             $scope.hideMenu = false;
 
             var auth = $firebaseAuth();

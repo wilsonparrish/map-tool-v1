@@ -20,6 +20,16 @@
                     templateUrl: '../views/divmapMaker.html',
                     controller: 'divmapMakerCtrl'
                 })
+                .state('campaignLobby', {
+                    url: '/campaignLobby/:campaignId',
+                    templateUrl: '../views/campaignLobby.html',
+                    controller: 'lobbyCtrl',
+                    resolve: {
+                        campaign: function(campaignService, $stateParams){
+                            return campaignService.getCampaign($stateParams.campaignId);
+                        }
+                    }
+                })
         });
 
 

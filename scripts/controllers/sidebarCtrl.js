@@ -58,6 +58,13 @@
                     dieRolls.push(dieRoll);
                     numberOfDice--;
                 }
+                
+                // Display each roll 
+                var rollsString = dieRolls.join(", ");
+                rollsString = "(" + rollsString + ")";
+                if(rollsString.length < 50) document.getElementById('individual-rolls').textContent = rollsString;
+                
+                // Sum and display Total
                 dieRolls.push(parseInt(modifier)); //add the mod to the roll
                 var totalRoll = (dieRolls.reduce(function (x, y) { return x + y; })).toString();
                 trackRecentRolls(totalRoll);

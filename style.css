@@ -11,6 +11,10 @@ html, body {
     margin: 0;
 }
 
+.main-content {
+    padding: 30px;
+}
+
 /*#sidebar {
     height: 1500px;
 }*/
@@ -44,30 +48,6 @@ html, body {
     padding: 30px;
 }
 
-/* gridmap styles*/
-#grid-container {
-    overflow: scroll;
-    padding: 30px;
-}
-
-#grid {
-    height: 601px;
-    background-size: 30px 30px;
-    background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(to bottom, grey 1px, transparent 1px);
-    width: 150%;            
-}
-
-#grid-snap {
-    width: 30px;
-    font-size: 1.2em;
-    cursor: crosshair;
-}
-
-.character-image {
-    height: 30px; 
-    width: 30px;
-}
-
 #dice-number, #dice-modifier{
     width:100px;
 }
@@ -83,6 +63,16 @@ html, body {
 #recent-rolls {
     border: 1px solid black;
     padding: 3px;
+}
+
+/* lobby browser styles */
+.rowColor:nth-child(even) {
+   background-color: #fff;
+   padding: 1%;
+}
+.rowColor:nth-child(odd) {
+   background-color: #eee;
+   padding: 1%;
 }
 
 /* divmap styles*/

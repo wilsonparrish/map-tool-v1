@@ -1,0 +1,50 @@
+<header id="home-banner" class="w3-indigo">
+    <h1>Browse Lobbies</h1>
+</header>
+<div class="main-content">
+    <div class="w3-row">
+        <div class="w3-container">
+            <button class="w3-btn w3-blue-grey" onclick="document.getElementById('create-campaign-modal').style.display='block'">Create New Campaign</button>
+        </div>
+    </div>
+    <br><br>
+    <div class="w3-row">
+        <div class="w3-container">
+            <h2>Search Campaigns</h2>
+            <p>Find your friends or join an open campaign!</p>
+
+            <table class="w3-table w3-striped w3-bordered w3-card-4">
+                <thead>
+                    <tr class="w3-teal">
+                        <th>Campaign Name</th>
+                        <th>DM Name</th>
+                        <th>Search: <input type="text" ng-model="campaignSearchTerm"></th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="campaign in allCampaigns | filter: campaignSearchTerm">
+                    <td>{{campaign.name}}</td>
+                    <td>{{campaign.DM}}</td>
+                    <td><a ui-sref="campaignLobby({campaignId: campaign.id})"></a>Join</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- create campaign modal -->
+<div id="create-campaign-modal" class="w3-modal">
+    <div class="w3-modal-content">
+        <header class="w3-container w3-teal">
+            <span onclick="document.getElementById('create-campaign-modal').style.display='none'" class="w3-closebtn">&times;</span>
+            <h2>Modal Header</h2>
+        </header>
+        <div class="w3-container">
+            <p>Some text..</p>
+            <p>Some text..</p>
+        </div>
+        <!--<footer class="w3-container w3-teal">
+            <p>Modal Footer</p>
+        </footer>-->
+    </div>
+</div>

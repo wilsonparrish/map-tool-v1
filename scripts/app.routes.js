@@ -30,6 +30,16 @@
                         }
                     }
                 })
+                .state('lobbyBrowser', {
+                    url: '/lobbyBrowser',
+                    templateUrl: '../views/lobbyBrowser.html',
+                    controller: 'lobbyBrowserCtrl',
+                    resolve: {
+                        allCampaigns: function(campaignService){
+                            return campaignService.getAllCampaigns();
+                        }
+                    }
+                })
         });
 
 

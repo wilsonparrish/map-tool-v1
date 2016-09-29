@@ -24,6 +24,20 @@
                         name: 'Sons of Gruumsh',
                         DM: 'NyanPudge',
                         id: 3
+                    },{
+                        name: 'Neverwinter Nights',
+                        DM: 'Caketown',
+                        id: 1
+                    },
+                    {
+                        name: 'Shadows of Anauroch',
+                        DM: 'Scoot',
+                        id: 2
+                    },
+                    {
+                        name: 'Sons of Gruumsh',
+                        DM: 'NyanPudge',
+                        id: 3
                     },
                 ]
             }

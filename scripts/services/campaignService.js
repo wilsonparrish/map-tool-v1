@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('app')
-        .service("campaignService", function ($http, $q, $firebaseAuth, $firebaseObject) {
+        .service("campaignService", function ($http, $q, $firebaseArray, $firebaseObject) {
 
             this.getCampaign = function (id) {
                 return { name: 'super duper campaign', id: id };

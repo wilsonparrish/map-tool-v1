@@ -2,10 +2,12 @@
     "use strict";
 
     angular.module('app')
-        .controller('divmapMakerCtrl', function ($scope, $timeout, $firebaseArray, $firebaseObject) {
+        .controller('divmapMakerCtrl', function ($scope, $timeout, $firebaseArray, $firebaseObject, mapsService) {
 
             var fbref = firebase.database().ref();
             var mapBeingEdited;
+            
+            $scope.user = JSON.parse(localStorage.getItem('firebaseUser'));
 
             $scope.cellsArray = [];
             $scope.mapWidth;
@@ -63,9 +65,7 @@
                 $scope.mapHeight = $scope.mapDivHeight * $scope.gridSize + 'px';
             }
 
-            var mapsRef = fbref.child("savedMaps");
-            $scope.savedMaps = $firebaseArray(mapsRef);
-            console.log($scope.savedMaps);
+            $scope.savedMaps = mapsService.getMaps();
 
             $scope.saveMap = function (mapName) {
                 var mapData = {
@@ -73,7 +73,8 @@
                     height: $scope.mapDivHeight,
                     width: $scope.mapDivWidth,
                     name: $scope.mapName,
-                    gridSize: $scope.gridSize
+                    gridSize: $scope.gridSize,
+                    owner: $scope.user.user.displayName
                 };
                 console.log('saving: ', mapData);
                 if (mapName) {
@@ -85,7 +86,8 @@
                             $scope.savedMaps[i].width = mapData.width;
                             $scope.savedMaps[i].name = mapData.name;
                             $scope.savedMaps[i].gridSize = mapData.gridSize;
-                            $scope.savedMaps.$save($scope.savedMaps.$keyAt(i)).then(function (ref) {
+                            $scope.savedMaps[i].owner = $scope.user.user.displayName;
+                            $scope.savedMaps.$save(i).then(function (ref) {
                                 console.log('saved: ', ref);
                             }, function (err) {
                                 // alert("there was an error saving this map", err);

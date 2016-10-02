@@ -55,9 +55,15 @@
             <span onclick="document.getElementById('create-campaign-modal').style.display='none'" class="w3-closebtn">&times;</span>
             <h2>Modal Header</h2>
         </header>
-        <div class="w3-container">
-            <p>Some text..</p>
-            <p>Some text..</p>
+        <div class="w3-container" style="padding: 15px;">
+            <label for="new-campaign-name">Campaign Name: </label>
+            <input type="text" ng-model="newCampaign.name" name="new-campaign-name">
+            <hr class="w3-blue-grey">
+            <p>Maps to include (you can add more later)</p>
+            <div ng-repeat="">
+
+            </div>
+            <button class="w3-btn w3-indigo" ng-click="createNewCampaign(newCampaign)">Create!</button>
         </div>
         <!--<footer class="w3-container w3-teal">
             <p>Modal Footer</p>

@@ -7,4 +7,11 @@
         The name of this Campaign is {{campaign.name}}
         <br> The ID is {{campaign.id}}
     </div>
+    <br><br>
+    <button class="w3-btn w3-red" ng-click="isUserDM = !isUserDM">Take DM role</button>
+
+    <div ng-show="isUserDM">
+        <label for="active-map">Saved Maps</label><br>
+        <select name="active-map" id="active-map" ng-model="activeMap" ng-show="isUserDM" ng-options="map as map.name for map in savedMaps"></select>
+    </div>
 </dIv>

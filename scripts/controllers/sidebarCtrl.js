@@ -20,9 +20,9 @@
                     $scope.error = error;
                 });
             };
-            
+
             // Simple auth solution for now
-            if(localStorage.getItem("firebaseUser")){
+            if (localStorage.getItem("firebaseUser")) {
                 $scope.firebaseUser = JSON.parse(localStorage.getItem("firebaseUser"));
             }
 
@@ -58,12 +58,12 @@
                     dieRolls.push(dieRoll);
                     numberOfDice--;
                 }
-                
+
                 // Display each roll 
                 var rollsString = dieRolls.join(", ");
                 rollsString = "(" + rollsString + ")";
-                if(rollsString.length < 50) document.getElementById('individual-rolls').textContent = rollsString;
-                
+                if (rollsString.length < 50) document.getElementById('individual-rolls').textContent = rollsString;
+
                 // Sum and display Total
                 dieRolls.push(parseInt(modifier)); //add the mod to the roll
                 var totalRoll = (dieRolls.reduce(function (x, y) { return x + y; })).toString();
@@ -90,6 +90,14 @@
                     console.log("recent rolls", rollString);
                 });
                 document.getElementById('recent-rolls').textContent = rollString;
+            }
+
+            //crappy temp log book solution
+            $scope.notePad = localStorage.getItem('notePad');
+
+            $scope.saveNotePad = function () {
+                console.log('saving notes');
+                localStorage.setItem('notePad', $scope.notePad);
             }
 
         });

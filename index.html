@@ -97,7 +97,7 @@
                     </div>
                     <div class="feature-card-content" ng-hide="logBooks">
                         <label for="note-pad">Note Pad (can be resized)</label><br>
-                        <textarea name="note-pad" ng-model="notePad" id="" cols="25" rows="10" ng-change="updatePlayerNote()" ng-disabled="!firebaseUser.user"></textarea>
+                        <textarea name="note-pad" ng-model="notePad" id="" cols="25" rows="10" ng-disabled="!firebaseUser.user" ng-change="saveNotePad()"></textarea>
                         <button class="w3-btn w3-indigo" id="journal-button">Open Party Journal</button>
                     </div>
                 </div>

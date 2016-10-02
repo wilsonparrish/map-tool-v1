@@ -6,8 +6,13 @@
 
             var fbref = firebase.database().ref();
 
+            var mapsRef = fbref.child("savedMaps");
+            $scope.savedMaps = $firebaseArray(mapsRef);
             $scope.campaign = campaign;
 
+
+            //placeholder temp crap
+            $scope.isUserDM = false;
         })
 
 } ());

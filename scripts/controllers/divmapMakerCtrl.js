@@ -46,7 +46,7 @@
                     $scope.updatingMap = false;                    
                     $timeout(function () {
                         $scope.rendering = false;
-                    }, 1500);
+                    }, 500);
                 }
                 if (chosenMap) {
                     $scope.cellsArray = JSON.parse(chosenMap.map);

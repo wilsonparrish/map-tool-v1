@@ -1,17 +1,46 @@
 <header id="home-banner" class="w3-indigo">
-    <h1>Campaign Lobby</h1>
+    <h1>{{campaign.name}}</h1>
 </header>
 <div class="main-content">
 
-    <div class="w3-row">
+    <!--<div class="w3-row">
         The name of this Campaign is {{campaign.name}}
-        <br> The ID is {{campaign.id}}
+    </div>-->
+    <br>
+    <div class="w3-row" id="divmap-content" ng-show="activeMap ">
+        <div id="map-container" class="w3-col m12 l12">
+            <h2>Current Map</h2>
+            <hr>
+            <div ng-show="rendering" id="render-screen" ng-style="{height: mapHeight}">
+                <h2>rendering...</h2>
+                <br><br>
+                <img src="images/giphy.gif">
+            </div>
+            <div id="divmap" ng-style="{width: mapWidth}" ">
+                <div ng-hide="rendering ">
+                    <div ng-repeat="cell in cellsArray track by $index " class="cell
+                " title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : '' " ng-style="{ 'background-color': cell.background, 'background-image':
+                'url(' + cell.backgroundUrl + ')', 'background-size': gridSize + 'px', 'height': gridSize + 'px', 'width': gridSize
+                + 'px' } " ng-mousedown=" "></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br><br>
-    <button class="w3-btn w3-red" ng-click="isUserDM = !isUserDM">Take DM role</button>
-
-    <div ng-show="isUserDM">
-        <label for="active-map">Saved Maps</label><br>
-        <select name="active-map" id="active-map" ng-model="activeMap" ng-show="isUserDM" ng-options="map as map.name for map in savedMaps | filter: user.user.displayName"></select>
-    </div>
+    <br>
+    <div class="w3-row ">
+        <div class="w3-col m7 l7">
+            <h2>Player Dashboard</h2>
+            <hr>
+            
+        </div>
+        <div class="w3-col m5 l5 ">
+            <div ng-show="isUserDM ">
+                <h2>DM Dashboard</h2>
+                <hr>
+                <label for="active-map ">Choose Active Map</label><br>
+                <select name="active-map " id="active-map " ng-model="activeMap " ng-show="isUserDM " ng-options="map
+            as map.name for map in savedMaps | filter: user.user.displayName | inArray:mapsArray: 'name' " ng-change="renderMap() "></select>
+            </div>
+        </div>
+    </div>    
 </dIv>

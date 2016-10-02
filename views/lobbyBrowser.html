@@ -33,7 +33,7 @@
                     <td>{{campaign.name}}</td>
                     <td>{{campaign.DM}}</td>
                     <td>
-                        <a ui-sref="campaignLobby({campaignId: campaign.id})">Join</a></td>
+                        <a ui-sref="campaignLobby({campaignId: getCampaignKey(campaign)})">Join</a></td>
                 </tr>
             </table>
             <br>
@@ -53,20 +53,28 @@
     <div class="w3-modal-content">
         <header class="w3-container w3-teal">
             <span onclick="document.getElementById('create-campaign-modal').style.display='none'" class="w3-closebtn">&times;</span>
-            <h2>Modal Header</h2>
+            <h2>Create a New Campaign</h2>
         </header>
         <div class="w3-container" style="padding: 15px;">
             <label for="new-campaign-name">Campaign Name: </label>
             <input type="text" ng-model="newCampaign.name" name="new-campaign-name">
             <hr class="w3-blue-grey">
-            <p>Maps to include (you can add more later)</p>
-            <div ng-repeat="">
 
+            <strong>Maps to include (you can add more later)</strong>
+            <br>
+            <br>
+            <div ng-repeat="map in savedMaps | filter: user.user.displayName">
+                <input type="checkbox" ng-model="map.selected"> <strong>{{map.name}}</strong>
             </div>
+
+            <br>
+            <hr class="w3-blue-grey">
             <button class="w3-btn w3-indigo" ng-click="createNewCampaign(newCampaign)">Create!</button>
+
         </div>
-        <!--<footer class="w3-container w3-teal">
-            <p>Modal Footer</p>
-        </footer>-->
+        <footer class="w3-container w3-green" ng-show="newCampaignRef">
+            <h3>Success!</h3>
+            <p>Campaign was created with an ID of "{{newCampaignRef.$$state.value}}"</p>
+        </footer>
     </div>
 </div>

@@ -45,18 +45,18 @@
                             <li>
                                 <a ui-sref="home">Home</a>
                             </li>
-                            <li ng-show="firebaseUser">
+                            <!--<li ng-show="firebaseUser">
                                 <a ui-sref="divmap">DivMap</a>
-                            </li>
+                            </li>-->
                             <li ng-show="firebaseUser">
                                 <a ui-sref="divmapMaker">DivMap Maker</a>
                             </li>
                             <li ng-show="firebaseUser">
                                 <a ui-sref="lobbyBrowser">Browse Lobbies</a>
                             </li>
-                            <li ng-show="firebaseUser">
+                            <!--<li ng-show="firebaseUser">
                                 <a ui-sref="campaignLobby({campaignId: 12})">Campaign Lobby</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </div>
@@ -143,6 +143,7 @@
     <script src="scripts/controllers/lobbyBrowserCtrl.js"></script>    
     <script src="scripts/services/campaignService.js"></script>
     <script src="scripts/services/mapsService.js"></script>
+    <script src="scripts/filters/inArray.js"></script>                            
     <script src="scripts/filters/startFrom.js"></script>                            
 
     <script>

@@ -12,6 +12,6 @@
 
     <div ng-show="isUserDM">
         <label for="active-map">Saved Maps</label><br>
-        <select name="active-map" id="active-map" ng-model="activeMap" ng-show="isUserDM" ng-options="map as map.name for map in savedMaps"></select>
+        <select name="active-map" id="active-map" ng-model="activeMap" ng-show="isUserDM" ng-options="map as map.name for map in savedMaps | filter: user.user.displayName"></select>
     </div>
 </dIv>

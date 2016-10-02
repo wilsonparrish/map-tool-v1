@@ -6,6 +6,8 @@
 
             var fbref = firebase.database().ref();
 
+            $scope.user = JSON.parse(localStorage.getItem('firebaseUser'));
+
             var mapsRef = fbref.child("savedMaps");
             $scope.savedMaps = $firebaseArray(mapsRef);
             $scope.campaign = campaign;

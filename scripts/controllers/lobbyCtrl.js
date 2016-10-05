@@ -53,14 +53,11 @@
                 return returnMap;
             }
 
-
-
-            $scope.isUserDM = function () {
-                if ($scope.user.display === $scope.campaign.DM) {
-                    return true;
-                }
-                return false;
-            };
+            if ($scope.user.user.displayName === $scope.campaign.DM) {
+                $scope.isUserDM = true;
+            } else {
+                $scope.isUserDM =  false;
+            }
         })
 
 } ());

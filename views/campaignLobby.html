@@ -34,11 +34,11 @@
             
         </div>
         <div class="w3-col m5 l5 ">
-            <div ng-show="isUserDM ">
+            <div ng-show="isUserDM">
                 <h2>DM Dashboard</h2>
                 <hr>
                 <label for="active-map ">Choose Active Map</label><br>
-                <select name="active-map " id="active-map " ng-model="activeMap " ng-show="isUserDM " ng-options="map
+                <select name="active-map " id="active-map " ng-model="activeMap " ng-options="map
             as map.name for map in savedMaps | filter: user.user.displayName | inArray:mapsArray: 'name' " ng-change="renderMap() "></select>
             </div>
         </div>

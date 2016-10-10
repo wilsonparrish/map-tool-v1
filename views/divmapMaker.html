@@ -5,30 +5,45 @@
             <br><br>
             <img src="images/giphy.gif">
         </div>
-        <div id="divmap" ng-style="{width: mapWidth}" ng-mouseleave="setDragging(false)">
+        <div id="divmap" ng-style="{width: mapWidth}" ng-mouseleave="setDragging(false)" ng-mouseenter="setDragging(false)">
             <div ng-hide="rendering">
                 <div ng-repeat="cell in cellsArray track by $index" class="cell" title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : ''"
                     ng-style="{'background-color': cell.background, 'background-image': 'url(' + cell.backgroundUrl + ')', 'background-size': gridSize + 'px', 'height': gridSize + 'px', 'width': gridSize + 'px'  }"
-                    ng-mousedown="cell.backgroundUrl = activeCustom; cell.background = activeColor; addingTooltip = true; tipId = $index; setDragging(true);" ng-mouseup="setDragging(false)"
-                    ng-mouseenter="mouseDragCheck(cell)"></div>
+                    ng-mousedown="cell.backgroundUrl = activeCustom; cell.background = activeColor; addingTooltip = true; tipId = $index; setDragging(true);"
+                    ng-mouseup="setDragging(false)" ng-mouseenter="mouseDragCheck(cell)"></div>
             </div>
         </div>
     </div>
 </div>
 <div class="w3-row" id="map-size">
     <div class="w3-col m4 l4">
-        <h2>Select Map Size</h2>
-        <div>
-            <label for="height">Height</label><br>
-            <input type="number" name="height" ng-model="mapDivHeight" ng-change="createMap(true)">
+        <div ng-hide="chosenMap">
+            <h2>Select Map Size</h2>
+            <div>
+                <label for="height">Height</label><br>
+                <input type="number" name="height" ng-model="mapDivHeight" ng-change="createMap(true)">
+            </div>
+            <div>
+                <label for="width">Width</label><br>
+                <input type="number" name="width" ng-model="mapDivWidth" ng-change="createMap(true)">
+            </div>
         </div>
-        <div>
-            <label for="width">Width</label><br>
-            <input type="number" name="width" ng-model="mapDivWidth" ng-change="createMap(true)">
+        <div ng-show="chosenMap">
+            <h2>Map Resize</h2>
+            <div>
+                <label for="resize-option">Choose One:</label><br>
+                <select name="resize-option" ng-model="chosenResizeOption" ng-options="option.optionNum as option.display for option in resizeOptions"></select>
+            </div><br>
+            <div>
+                <label for="rows-cols">How many rows/cols?</label><br>
+                <input type="number" name="rows-cols" ng-model="resizeRowsCols">
+            </div><br>
+            <button class="w3-btn w3-indigo" ng-click="resizeMap()">Make Changes</button>
         </div>
         <br>
+        <br>
         <div>
-            <label for="gridSize">Grid Size</label>
+            <label for="gridSize">Grid Size:</label>
             <select name="gridSize" ng-model="gridSize" ng-change="createMap(false)">
                 <option value="20">small</option>
                 <option value="30">medium</option>
@@ -43,12 +58,13 @@
         </div>
         <br>
         <button class="w3-btn w3-indigo" ng-click="saveMap()" ng-hide="updatingMap">Save</button>
-        <button class="w3-btn w3-indigo" ng-click="saveMap(mapName)" ng-show="updatingMap">Update Map</button>        
+        <button class="w3-btn w3-indigo" ng-click="saveMap(mapName)" ng-show="updatingMap">Update Map</button>
         <br>
         <hr>
         <h2>Or Edit a Map</h2>
         <label for="saved-maps">Saved Maps</label><br>
-        <select name="saved-maps" id="" ng-options="map as map.name for map in savedMaps | filter: user.user.displayName" ng-model="chosenMap" ng-change="createMap(false, chosenMap)"></select>
+        <select name="saved-maps" id="" ng-options="map as map.name for map in savedMaps | filter: user.user.displayName" ng-model="chosenMap"
+            ng-change="createMap(false, chosenMap)"></select>
     </div>
     <div class="w3-col m8 l8">
         <h2>Tile Palette</h2>
@@ -67,7 +83,7 @@
             <label for="newUrl">Enter Url for new Tile Image</label><br>
             <label for="customTileName">Name</label><br>
             <input type="text" name="customTileName" ng-model="customTileName"><br>
-            <label for="newUrl">Image Url</label><br>            
+            <label for="newUrl">Image Url</label><br>
             <input type="text" name="newUrl" ng-model="newUrl">
             <button class="w3-btn w3-indigo" ng-click="adding = !adding; addCustom()">Add</button>
             <button class="w3-btn w3-red" ng-click="adding = !adding">Cancel</button>

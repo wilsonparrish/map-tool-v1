@@ -7,7 +7,7 @@
         The name of this Campaign is {{campaign.name}}
     </div>-->
     <br>
-    <div class="w3-row" id="divmap-content" ng-show="activeMap ">
+    <div class="w3-row" id="divmap-content" ng-show="activeMap">
         <div id="map-container" class="w3-col m12 l12">
             <h2>Current Map</h2>
             <hr>
@@ -16,7 +16,7 @@
                 <br><br>
                 <img src="images/giphy.gif">
             </div>
-            <div id="divmap" ng-style="{width: mapWidth}" ">
+            <div id="divmap" ng-style="{width: mapWidth}">
                 <div ng-hide="rendering ">
                     <div ng-repeat="cell in cellsArray track by $index " class="cell
                 " title={{cell.tooltip}} ng-class="cell.tooltip ? 'hasTooltip' : '' " ng-style="{ 'background-color': cell.background, 'background-image':
@@ -31,7 +31,7 @@
         <div class="w3-col m7 l7">
             <h2>Player Dashboard</h2>
             <hr>
-            
+
         </div>
         <div class="w3-col m5 l5 ">
             <div ng-show="isUserDM">
@@ -42,5 +42,5 @@
             as map.name for map in savedMaps | filter: user.user.displayName | inArray:mapsArray: 'name' " ng-change="renderMap() "></select>
             </div>
         </div>
-    </div>    
+    </div>
 </dIv>

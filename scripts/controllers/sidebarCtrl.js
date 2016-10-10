@@ -40,12 +40,8 @@
             *functionality for dicebag
             */
             var recentRolls = [];
-            var button = document.getElementById('roll-button');
-            button.onclick = function (e) {
-                rollDice();
-            }
 
-            function rollDice() {
+            $scope.rollDice = function () {
                 var numberOfDice = document.getElementById('dice-number').value;
                 var typeOfDice = document.getElementById('dice-type').value;
                 var modifier = document.getElementById('dice-modifier').value || 0;
@@ -92,13 +88,32 @@
                 document.getElementById('recent-rolls').textContent = rollString;
             }
 
-            //crappy temp log book solution
+            // Crappy temp log book solution
             $scope.notePad = localStorage.getItem('notePad');
 
             $scope.saveNotePad = function () {
                 console.log('saving notes');
                 localStorage.setItem('notePad', $scope.notePad);
-            }
+            };
+
+            $scope.activeCampaign = null;
+
+            $scope.newPartyJournalNote = {};
+
+            $scope.addPartyJournalNote = function () {
+                console.log($scope.newPartyJournalNote);
+                if (!$scope.newPartyJournalNote.characterName || !$scope.newPartyJournalNote.text) {
+                    toastr.warning('Must have a Name and Note text', 'Hold up');
+                    return;
+                }
+                if ($scope.activeCampaign && !$scope.activeCampaign.partyJournal) {
+                    $scope.activeCampaign.partyJournal = [];
+                };
+                $scope.newPartyJournalNote.timeStamp = new Date();
+                $scope.activeCampaign.partyJournal.push($scope.newPartyJournalNote);
+
+                $scope.newPartyJournalNote = {};
+            };
 
         });
 

@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('app')
-        .controller('lobbyBrowserCtrl', function ($scope, $firebaseArray, $firebaseObject, allCampaigns, $filter, mapsService, campaignService) {
+        .controller('lobbyBrowserCtrl', function ($scope, $firebaseArray, $firebaseObject, allCampaigns, $filter, mapsService, campaignService, $rootScope) {
 
             var fbref = firebase.database().ref();
 
@@ -12,7 +12,11 @@
             $scope.newCampaignRef = null;
 
             $scope.getCampaignKey = function(camp) {
-                return $scope.allCampaigns.$keyAt(camp);
+                var key = $scope.allCampaigns.$keyAt(camp);
+                // $rootScope.$broadcast('Update Active Campaign Key', key);
+                // $rootScope.$broadcast('Update Active Campaign', camp);
+                camp.key = key;
+                return key;
             }
 
             $scope.createNewCampaign = function(newCamp) {

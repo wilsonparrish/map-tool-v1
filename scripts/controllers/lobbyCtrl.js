@@ -10,6 +10,7 @@
 
             $scope.savedMaps = mapsService.getMaps();
             $scope.campaign = campaign;
+            $scope.$parent.activeCampaign = $scope.campaign;
             $scope.allCampaigns = campaignService.getAllCampaigns();
 
             $scope.renderMap = function () {

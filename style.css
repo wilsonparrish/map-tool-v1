@@ -32,20 +32,7 @@ html, body {
 }
 
 #hide-menu-btn {
-    float:right;
-}
-
-/*home styles*/
-#home-banner {
-    height: 200px;
-    padding: 20px;
-    text-align: center; 
-}
-#home-banner {
-    margin: 0;
-}
-#home-body {
-    padding: 30px;
+    float: right;
 }
 
 #dice-number, #dice-modifier{
@@ -65,6 +52,19 @@ html, body {
     padding: 3px;
 }
 
+/*home styles*/
+#home-banner {
+    height: 200px;
+    padding: 20px;
+    text-align: center; 
+}
+#home-banner {
+    margin: 0;
+}
+#home-body {
+    padding: 30px;
+}
+
 /* lobby browser styles */
 .rowColor:nth-child(even) {
    background-color: #fff;
@@ -73,6 +73,16 @@ html, body {
 .rowColor:nth-child(odd) {
    background-color: #eee;
    padding: 1%;
+}
+
+/* party journal styles */
+.journal-page {
+    border: 1px solid grey; 
+    border-radius: 5px; 
+    padding: 10px; 
+    background-color: white; 
+    max-height: 500px; 
+    overflow: auto;
 }
 
 /* divmap styles*/

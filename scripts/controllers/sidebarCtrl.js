@@ -36,9 +36,7 @@
                 $scope[property] = !$scope[property];
             }
 
-            /*
-            *functionality for dicebag
-            */
+            // Functionality for Dicebag
             var recentRolls = [];
 
             $scope.rollDice = function () {
@@ -106,6 +104,7 @@
                     toastr.warning('Must have a Name and Note text', 'Hold up');
                     return;
                 }
+                $scope.newPartyJournalNote.user = $scope.firebaseUser.user.displayName;
                 if ($scope.activeCampaign && !$scope.activeCampaign.partyJournal) {
                     $scope.activeCampaign.partyJournal = [];
                 };

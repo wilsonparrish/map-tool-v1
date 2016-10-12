@@ -1,62 +1,62 @@
 <div class="w3-col w3-light-blue w3-card-8" ng-class="hideMenu ? 'm2 l1' : 'm4 l3'" id="sidebar">
-    <header class="w3-container w3-blue-grey">
-        <h1 ng-hide="hideMenu">Thy Dungeon Map</h1>
-        <h1 ng-show="hideMenu">TDM</h1>
-    </header>
-    <div ng-class="hideMenu ? 'hidden-menu' : 'sidebar-content'">
-        <div class="w3-card-8 w3-white feature-card">
-            <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideProfile')" title="Click to Hide">
-                <img src="/images/weapons_medieval_helmet-512.png" style="width:30px;">
-                <h3 style="display: inline-block">Your Profile</h3>
-            </div>
-            <div class="feature-card-content" ng-hide="hideProfile">
-                <div ng-show="firebaseUser">Hello, {{firebaseUser.user.displayName}}</div>
-                <div ng-hide="firebaseUser">
-                    It looks like you're not logged in.
-                    <br>
-                    <button ng-click="signIn()" class="w3-btn w3-red">Sign in with Google</button>
-                </div>
-                <br>
-                <button class="w3-btn w3-indigo" id="logout-button" ng-show="firebaseUser" ng-click="logout()">Logout</button>
-            </div>
-        </div>
-        <br>
-        <div class="w3-card-8 w3-white feature-card">
-            <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideNav')" title="Click to Hide">
-                <img src="/images/compas-152-201442.png" style="width:30px;">
-                <h3 style="display: inline-block">Navigation</h3>
-            </div>
-            <div class="feature-card-content" ng-hide="hideNav">
-                <ul>
-                    <li>
-                        <a ui-sref="home">Home</a>
-                    </li>
-                    <!--<li ng-show="firebaseUser">
+	<header class="w3-container w3-blue-grey">
+		<h1 ng-hide="hideMenu">Thy Dungeon Map</h1>
+		<h1 ng-show="hideMenu">TDM</h1>
+	</header>
+	<div ng-class="hideMenu ? 'hidden-menu' : 'sidebar-content'">
+		<div class="w3-card-8 w3-white feature-card">
+			<div class="w3-container w3-indigo card-header" ng-click="hideCard('hideProfile')" title="Click to Hide">
+				<img src="/images/weapons_medieval_helmet-512.png" style="width:30px;">
+				<h3 style="display: inline-block">Your Profile</h3>
+			</div>
+			<div class="feature-card-content" ng-hide="hideProfile">
+				<div ng-show="firebaseUser">Hello, {{firebaseUser.user.displayName}}</div>
+				<div ng-hide="firebaseUser">
+					It looks like you're not logged in.
+					<br>
+					<button ng-click="signIn()" class="w3-btn w3-red">Sign in with Google</button>
+				</div>
+				<br>
+				<button class="w3-btn w3-indigo" id="logout-button" ng-show="firebaseUser" ng-click="logout()">Logout</button>
+			</div>
+		</div>
+		<br>
+		<div class="w3-card-8 w3-white feature-card">
+			<div class="w3-container w3-indigo card-header" ng-click="hideCard('hideNav')" title="Click to Hide">
+				<img src="/images/compas-152-201442.png" style="width:30px;">
+				<h3 style="display: inline-block">Navigation</h3>
+			</div>
+			<div class="feature-card-content" ng-hide="hideNav">
+				<ul>
+					<li>
+						<a ui-sref="home">Home</a>
+					</li>
+					<!--<li ng-show="firebaseUser">
                                 <a ui-sref="divmap">DivMap</a>
                             </li>-->
-                    <li ng-show="firebaseUser">
-                        <a ui-sref="divmapMaker">DivMap Maker</a>
-                    </li>
-                    <li ng-show="firebaseUser">
-                        <a ui-sref="lobbyBrowser">Browse Lobbies</a>
-                    </li>
-                    <li ng-show="activeCampaign">
-                        <a ui-sref="campaignLobby({campaignId: activeCampaign.key})">Campaign Lobby</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <div class="w3-card-8 w3-white feature-card">
-            <div class="w3-container w3-indigo card-header" ng-click="hideCard('hideDice')" title="Click to Hide">
-                <img src="/images/dice-152-92041.png" style="width:30px;">
-                <h3 style="display: inline-block">Dice roller</h3>
-            </div>
-            <div class="feature-card-content" ng-hide="hideDice">
-                Number of Dice x Type of Dice + Modifiers
-                <div class="dice-bag">
-                    <input type="number" id="dice-number"> x
-                    <select name="dice-type" id="dice-type">
+					<li ng-show="firebaseUser">
+						<a ui-sref="divmapMaker">DivMap Maker</a>
+					</li>
+					<li ng-show="firebaseUser">
+						<a ui-sref="lobbyBrowser">Browse Lobbies</a>
+					</li>
+					<li ng-show="activeCampaign">
+						<a ui-sref="campaignLobby({campaignId: activeCampaign.key})">Campaign Lobby</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<div class="w3-card-8 w3-white feature-card">
+			<div class="w3-container w3-indigo card-header" ng-click="hideCard('hideDice')" title="Click to Hide">
+				<img src="/images/dice-152-92041.png" style="width:30px;">
+				<h3 style="display: inline-block">Dice roller</h3>
+			</div>
+			<div class="feature-card-content" ng-hide="hideDice">
+				Number of Dice x Type of Dice + Modifiers
+				<div class="dice-bag">
+					<input type="number" id="dice-number"> x
+					<select name="dice-type" id="dice-type">
                             <option value="3">d3</option>
                             <option value="4">d4</option>
                             <option value="6">d6</option>
@@ -66,71 +66,48 @@
                             <option value="20">d20</option>
                             <option value="100">d100</option>                            
                         </select> +
-                    <input type="number" id="dice-modifier">&nbsp&nbsp
-                    <br><br>
-                    <button class="w3-btn w3-indigo" id="roll-button" ng-click="rollDice()">Roll!</button>&nbsp&nbsp
-                    <span id="roll"></span>
-                    <span id="individual-rolls"></span>
-                </div>
-                <br> Recent Rolls
-                <div id="recent-rolls"></div>
-            </div>
-        </div>
-        <br>
-        <div class="w3-card-8 w3-white feature-card">
-            <div class="w3-container w3-indigo card-header" ng-click="hideCard('logBooks')" title="Click to Hide">
-                <img src="/images/brown-book1.png" style="width:30px;">
-                <h3 style="display: inline-block">Log Books</h3>
-            </div>
-            <div class="feature-card-content" ng-hide="logBooks">
-                <label for="note-pad">Note Pad (can be resized)</label><br>
-                <textarea name="note-pad" ng-model="notePad" id="" cols="25" rows="10" ng-disabled="!firebaseUser.user" ng-change="saveNotePad()"></textarea>
-                <button class="w3-btn w3-indigo" id="journal-button" ng-show="activeCampaign" onclick="document.getElementById('party-journal-modal').style.display='block'">Open Party Journal</button>
-            </div>
-        </div>
-        <br>
-    </div>
-    <div class="sidebar-content">
-        <button id="hide-menu-btn" class="w3-btn w3-indigo" ng-click="hideMenu=!hideMenu">Toggle Menu</button>
-    </div>
+					<input type="number" id="dice-modifier">&nbsp&nbsp
+					<br><br>
+					<button class="w3-btn w3-indigo" id="roll-button" ng-click="rollDice()">Roll!</button>&nbsp&nbsp
+					<span id="roll"></span>
+					<span id="individual-rolls"></span>
+				</div>
+				<br> Recent Rolls
+				<div id="recent-rolls"></div>
+			</div>
+		</div>
+		<br>
+		<div class="w3-card-8 w3-white feature-card">
+			<div class="w3-container w3-indigo card-header" ng-click="hideCard('logBooks')" title="Click to Hide">
+				<img src="/images/brown-book1.png" style="width:30px;">
+				<h3 style="display: inline-block">Log Books</h3>
+			</div>
+			<div class="feature-card-content" ng-hide="logBooks">
+				<label for="note-pad">Note Pad (can be resized)</label><br>
+				<textarea name="note-pad" ng-model="notePad" id="" cols="25" rows="10" ng-disabled="!firebaseUser.user" ng-change="saveNotePad()"></textarea>
+				<button class="w3-btn w3-indigo" id="journal-button" ng-show="activeCampaign" onclick="document.getElementById('party-journal-modal').style.display='block'">Open Party Journal</button>
+			</div>
+		</div>
+		<br>
+	</div>
+	<div class="sidebar-content">
+		<button id="hide-menu-btn" class="w3-btn w3-indigo" ng-click="hideMenu=!hideMenu">Toggle Menu</button>
+	</div>
 
+	<ng-include src="'/views/snippets/partyJournal.html'"></ng-include>
 
-    <!-- party journal modal -->
-    <div id="party-journal-modal" class="w3-modal">
-        <div class="w3-modal-content">
-            <header class="w3-container w3-brown">
-                <span onclick="document.getElementById('party-journal-modal').style.display='none'" class="w3-closebtn">&times;</span>
-                <h2>Party Journal</h2>
-            </header>
-            <div class="w3-container" style="padding: 15px;">
-                <span ng-hide="activeCampaign.partyJournal.length > 0">There's nothing here yet...</span>
-                <div ng-repeat="note in activeCampaign.partyJournal">
-                    <div class="w3-row" style="max-height: 600px; overflow: auto;">
-                        <div class="w3-col m3">
-                            {{note.characterName}}: <br>
-                            <span style="color:gray; font-size: 10px;">{{note.timeStamp.toLocaleDateString()}} - {{note.timeStamp.toLocaleTimeString()}}</span>
-                        </div>
-                        <div class="w3-col m9">{{note.text}}</div>
-                    </div>
-                    <hr> 
-                </div>
-                <!--<span class="w3-badge"></span>-->
-            </div>
-            <footer class="w3-container w3-brown" style="padding: 15px;">
-                <h3>Add a Note</h3>                
-                <div class="w3-row">
-                    <div class="w3-col m3">
-                        Say As(Character Name):
-                        <br><br> Note:
-                    </div>
-                    <div class="w3-col m9">
-                        <input type="text" ng-model="newPartyJournalNote.characterName">
-                        <button class="w3-btn w3-indigo" ng-click="addPartyJournalNote()">Add</button>                        
-                        <br><br>
-                        <textarea ng-model="newPartyJournalNote.text" style="width:100%">
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
 </div>
+
+<script>
+    // Jquery to help the sidebar work right
+    function checkSidebarHeight () {
+        var intViewportHeight = window.innerHeight;
+        var height = $('#main-body').height();
+        if (intViewportHeight > height) {
+            $('#sidebar').height(intViewportHeight);
+        } else {
+            $('#sidebar').height(height);
+        } 
+    }
+    window.setInterval(checkSidebarHeight, 500);
+</script>

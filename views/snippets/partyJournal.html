@@ -1,0 +1,40 @@
+<!-- party journal modal -->
+	<div id="party-journal-modal" class="w3-modal">
+		<div class="w3-modal-content">
+			<header class="w3-container w3-brown">
+				<span onclick="document.getElementById('party-journal-modal').style.display='none'" class="w3-closebtn">&times;</span>
+				<h2>Party Journal</h2>
+			</header>
+			<div class="w3-container w3-light-grey" style="padding: 10px;">
+				<span ng-hide="activeCampaign.partyJournal.length > 0">There's nothing here yet...</span>
+				<div class="journal-page" style="border: 1px solid grey; border-radius: 5px; padding: 10px; background-color: white; max-height: 500px; overflow: auto;" ng-show="activeCampaign.partyJournal.length > 0">
+					<div ng-repeat="note in activeCampaign.partyJournal">
+						<div class="w3-row">
+							<div class="w3-col m3">
+								{{note.characterName}}: <br>
+								<span style="color:gray; font-size: 10px;">{{note.timeStamp.toLocaleDateString()}} - {{note.timeStamp.toLocaleTimeString()}}</span>
+							</div>
+							<div class="w3-col m9">{{note.text}}</div>
+						</div>
+						<hr>
+					</div>
+				</div>
+				<!--<span class="w3-badge"></span>-->
+			</div>
+			<footer class="w3-container w3-brown" style="padding: 15px;">
+				<h3>Add a Note</h3>
+				<div class="w3-row">
+					<div class="w3-col m3">
+						Say As(Character Name):
+						<br><br> Note:
+					</div>
+					<div class="w3-col m9">
+						<input type="text" ng-model="newPartyJournalNote.characterName">
+						<button class="w3-btn w3-indigo" ng-click="addPartyJournalNote()">Add</button>
+						<br><br>
+						<textarea ng-model="newPartyJournalNote.text" style="width:100%">
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>

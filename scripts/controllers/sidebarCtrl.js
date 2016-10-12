@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('app')
-        .controller('sidebarCtrl', function ($scope, $firebaseAuth, $firebaseArray, $firebaseObject, campaignService) {
+        .controller('sidebarCtrl', function ($scope, $firebaseAuth, $firebaseArray, $firebaseObject, campaignService, $interval) {
 
             var fbref = firebase.database().ref();
             $scope.hideMenu = false;
@@ -31,11 +31,14 @@
                 $scope.firebaseUser = null;
             }
 
-
             $scope.hideCard = function (property) {
                 $scope[property] = !$scope[property];
             }
 
+            $scope.toggleSidebar = function () {
+                $scope.hideMenu = !$scope.hideMenu;
+            }
+            
             // Functionality for Dicebag
             var recentRolls = [];
 

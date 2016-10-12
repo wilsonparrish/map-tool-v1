@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('app')
-        .controller('sidebarCtrl', function ($scope, $firebaseAuth, $firebaseArray, $firebaseObject) {
+        .controller('sidebarCtrl', function ($scope, $firebaseAuth, $firebaseArray, $firebaseObject, campaignService) {
 
             var fbref = firebase.database().ref();
             $scope.hideMenu = false;
@@ -108,8 +108,11 @@
                 if ($scope.activeCampaign && !$scope.activeCampaign.partyJournal) {
                     $scope.activeCampaign.partyJournal = [];
                 };
-                $scope.newPartyJournalNote.timeStamp = new Date();
+                var time = new Date();
+                $scope.newPartyJournalNote.timeStamp = time.toLocaleDateString() + ' - ' + time.toLocaleTimeString();
                 $scope.activeCampaign.partyJournal.push($scope.newPartyJournalNote);
+
+                campaignService.saveCampaign($scope.activeCampaign);
 
                 $scope.newPartyJournalNote = {};
             };

@@ -8,11 +8,11 @@
 			<div class="w3-container w3-light-grey" style="padding: 10px;">
 				<span ng-hide="activeCampaign.partyJournal.length > 0">There's nothing here yet...</span>
 				<div class="journal-page" style="border: 1px solid grey; border-radius: 5px; padding: 10px; background-color: white; max-height: 500px; overflow: auto;" ng-show="activeCampaign.partyJournal.length > 0">
-					<div ng-repeat="note in activeCampaign.partyJournal">
+					<div ng-repeat="note in activeCampaign.partyJournal track by $index">
 						<div class="w3-row">
 							<div class="w3-col m3">
 								{{note.characterName}}: <br>
-								<span style="color:gray; font-size: 10px;">{{note.timeStamp.toLocaleDateString()}} - {{note.timeStamp.toLocaleTimeString()}}</span>
+								<span style="color:gray; font-size: 10px;">{{note.timeStamp}}</span>
 							</div>
 							<div class="w3-col m9">{{note.text}}</div>
 						</div>

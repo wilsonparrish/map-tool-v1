@@ -13,6 +13,22 @@
             $scope.$parent.activeCampaign = $scope.campaign;
             $scope.allCampaigns = campaignService.getAllCampaigns();
 
+            $scope.playerIcon = localStorage.getItem('playerIcon') || "";
+            $scope.setPlayerIcon = function () {
+                localStorage.setItem("playerIcon", $scope.newIconUrl);
+                $scope.playerIcon = $scope.newIconUrl;
+            }
+            $scope.placeIcon = function (iconUrl, idx) {
+                $scope.cellsArray.forEach(function (e, i, a) {
+                    if (e.occupantIconUrl === iconUrl) {
+                        e.occupantIconUrl = "";
+                    }
+                })
+                $scope.cellsArray[idx].occupantIconUrl = iconUrl;
+                $scope.activeMap.map = JSON.stringify($scope.cellsArray);
+                mapsService.saveMap($scope.activeMap);
+            }
+
             $scope.renderMap = function () {
                 $scope.rendering = true;
                 $scope.gridSize = $scope.activeMap.gridSize;
@@ -57,7 +73,7 @@
             if ($scope.user.user.displayName === $scope.campaign.DM) {
                 $scope.isUserDM = true;
             } else {
-                $scope.isUserDM =  false;
+                $scope.isUserDM = false;
             }
         })
 
